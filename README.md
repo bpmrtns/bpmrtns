@@ -8,11 +8,11 @@
 ## 📌 Navegação
 
 - [👩‍💻 Quem sou eu](#-quem-sou-eu)
-- [🚀 Habilidades](#-habilidades)
-- [💼 Experiência](#-experiência)
-- [📊 Projetos](#-projetos)
-- [📚 Estudos](#-estudos)
-- [📬 Contato](#-contato)
+- [🚀 Habilidades](#minhas-habilidades)
+- [💼 Experiência](#minhas-experiências)
+- [📊 Projetos](#meus-projetos)
+- [📚 Estudos](#meus-estudos)
+- [📬 Contato](#meu-contato)
 
 ---
 
