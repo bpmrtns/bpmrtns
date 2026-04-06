@@ -1,4 +1,4 @@
-# 👩🏼‍💻📊 Bianca Martens❤️
+# 👩🏼‍💻📊 Bianca Martens
 
 **Analista de Dados**  
 📍 Curitiba - PR | 30 anos | Graduanda em Inteligência de Mercado | Profissional de dados com +5 de experiência
