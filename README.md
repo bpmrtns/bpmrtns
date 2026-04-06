@@ -5,10 +5,10 @@
 Me chamo Bianca, tenho 30 anos e sou de Curitiba/PR. Estou me formando em Inteligência de Mercado pela Unicesumar, mas sempre me atualizando por meio de cursos, palestras e workshops na área de dados. Já atuo em análise de dados há mais de 5 anos e continuo com a mesma paixão do começo, buscando evoluir constantemente e aplicar o conhecimento na prática. 
 
 <p align="left">
-    <a href="https://www.youtube.com/@larissakich?sub_confirmation=1">
+    <a href="https://www.linkedin.com/in/biancapmartens/">
         <img 
-            alt="youtube subscribers" 
-            title="Inscreva-se no meu canal" 
+            alt="PERFIL LINKEDIN" 
+            title="SE CONECTE COMIGO NO LINKEDIN!" 
             src="https://custom-icon-badges.demolab.com/youtube/channel/subscribers/UCo-gJ8RnTn5akHqHvO55DVA?color=%23E05D44&label=Inscreva-se&logo=video&logoColor=white&style=for-the-badge&labelColor=CE4630"
         />
     </a>
