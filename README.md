@@ -31,10 +31,11 @@ Me chamo Bianca, tenho 30 anos e sou de Curitiba/PR. Estou me formando em Inteli
 - PYTHON (Básico)
 
 **Análise de Dados:**
-- Criação de dashboards
+- Criação de dashboards (TABLEAU, PBI)
 - Modelagem de dados
 - Análise de indicadores (KPIs)
 - Tratamento de dados
+- Estatística (Estatística descritiva, média, mediana, moda, variância, desvio padrão, distribuição de frequência, histograma, boxplot, correlação, covariância, regressão linear, regressão múltipla, probabilidade, distribuição normal, distribuição binomial, teste de hipóteses, intervalo de confiança, p-valor, amostragem, outliers, análise exploratória de dados (EDA), séries temporais, inferência estatística)
 
 **Outros:**
 - ETL
