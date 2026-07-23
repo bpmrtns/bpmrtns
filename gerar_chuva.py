@@ -31,7 +31,7 @@ TARGET_RMS_DB = -20.0
 
 # Densidade de gotas por segundo (por canal). Alta o bastante para que
 # gotas individuais se fundam num crepitar continuo, sem virar goteira.
-DROPS_PER_SEC = 22000
+DROPS_PER_SEC = 13000
 
 
 def pink_noise(n, rng, state):
@@ -51,13 +51,14 @@ def make_drop_kernel(rng):
     variedade natural das gotas.
     """
     kernels = []
-    for fc, dur_ms in [(1800, 6), (2800, 5), (4200, 4), (900, 8)]:
+    # Gotas graves e arredondadas (nada de agudos sibilantes) -> som quente.
+    for fc, dur_ms in [(400, 12), (650, 10), (950, 8), (1400, 7)]:
         n = int(SAMPLE_RATE * dur_ms / 1000)
         burst = rng.standard_normal(n)
         sos = signal.butter(2, [fc * 0.6, fc * 1.6], btype="bandpass",
                             fs=SAMPLE_RATE, output="sos")
         burst = signal.sosfilt(sos, burst)
-        env = np.exp(-np.linspace(0, 5, n))  # decaimento exponencial rapido
+        env = np.exp(-np.linspace(0, 4, n))  # decaimento suave, gota arredondada
         k = burst * env
         k /= np.sqrt(np.sum(k**2)) + 1e-12
         kernels.append(k)
@@ -78,12 +79,13 @@ def main():
     pink_state = [signal.lfilter_zi([0.049922035, -0.095993537, 0.050612699,
                   -0.004408786], [1, -2.494956002, 2.017265875, -0.522189400]) * 0
                   for _ in range(n_channels)]
-    sos_wash = signal.butter(2, [200, 5000], btype="bandpass",
+    sos_wash = signal.butter(2, [150, 1600], btype="bandpass",
                              fs=SAMPLE_RATE, output="sos")
     zi_wash = [signal.sosfilt_zi(sos_wash) * 0 for _ in range(n_channels)]
-    sos_body = signal.butter(2, 300, btype="lowpass", fs=SAMPLE_RATE, output="sos")
+    sos_body = signal.butter(2, 250, btype="lowpass", fs=SAMPLE_RATE, output="sos")
     zi_body = [signal.sosfilt_zi(sos_body) * 0 for _ in range(n_channels)]
-    sos_tame = signal.butter(2, 9000, btype="lowpass", fs=SAMPLE_RATE, output="sos")
+    # Passa-baixa forte (ordem 4) corta os agudos que soam como chiado.
+    sos_tame = signal.butter(4, 2800, btype="lowpass", fs=SAMPLE_RATE, output="sos")
     zi_tame = [signal.sosfilt_zi(sos_tame) * 0 for _ in range(n_channels)]
     # Cauda da convolucao das gotas que transborda para o proximo bloco.
     drop_tail = [np.zeros(max_klen) for _ in range(n_channels)]
@@ -144,7 +146,7 @@ def main():
                 low = rng.standard_normal(n)
                 body, zi_body[ch] = signal.sosfilt(sos_body, low, zi=zi_body[ch])
 
-                mix = 1.0 * sizzle + 0.9 * wash + 0.5 * body
+                mix = 0.7 * sizzle + 1.0 * wash + 0.7 * body
                 mix, zi_tame[ch] = signal.sosfilt(sos_tame, mix, zi=zi_tame[ch])
                 chans.append(mix)
 
